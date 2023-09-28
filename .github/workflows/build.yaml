@@ -12,8 +12,7 @@ jobs:
         unity-version:
           - 2022.1.0f1
         targetPlatform:
-          - iOS # Build an iOS player.
-          - Android # Build an Android .apk standalone app.
+          - - StandaloneWindows
     steps:
       - uses: actions/checkout@v3
         with:
