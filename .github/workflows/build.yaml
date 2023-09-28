@@ -23,7 +23,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-${{ matrix.targetPlatform }}
+          key: Library-${{ matrix.unity-version }}-${{ matrix.target-platform }}
           restore-keys: Library-
       - if: matrix.targetPlatform == 'Android'
         uses: jlumbroso/free-disk-space@v1.2.0
@@ -34,7 +34,8 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD}}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+          unityVersion: ${{ matrix.unity-version }}
       - uses: actions/upload-artifact@v3
         with:
-          name: Build-${{ matrix.targetPlatform }}
-          path: build/${{ matrix.targetPlatform }}
+          name: Build-${{ matrix.unity-version }}-${{ matrix.target-platform }}
+          path: build/${{ matrix.unity-version }}/${{ matrix.targetPlatform }}
