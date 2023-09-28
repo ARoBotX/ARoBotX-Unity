@@ -10,8 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         unity-version:
-          - 2021.3.11f1
-          - 2022.1.23f1
+          - 2022.3.10f1
         targetPlatform:
           - iOS # Build an iOS player.
           - Android # Build an Android .apk standalone app.
