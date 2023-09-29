@@ -25,12 +25,9 @@ jobs:
           - 2022.3.9f1
         os:
           - windows-latest
-          - macos-latest
         include:
           - os: windows-latest
             target-platform: Android
-          - os: macos-latest
-            target-platform: iOS
     steps:
       - uses: actions/checkout@v3
         with:
