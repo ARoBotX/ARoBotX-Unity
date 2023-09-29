@@ -1,11 +1,11 @@
 name: Build project
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.unity-version }} ${{ matrix.os}} ${{ matrix.target-platform}}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     # strategy:
     #   fail-fast: false
     #   matrix:
@@ -22,18 +22,15 @@ jobs:
       matrix:
         unity-version:
           - 2021.3.11f1
-          - 2022.1.23f1
+          - 2022.3.9f1
         os:
           - windows-2019
           - macos-12
-          - ubuntu-latest
         include:
           - os: windows-2019
             target-platform: Android
           - os: macos-12
             target-platform: iOS
-          - os: ubuntu-latest
-            target-platform: StandaloneLinux64
     steps:
       - uses: actions/checkout@v3
         with:
