@@ -29,13 +29,10 @@ jobs:
         include:
           - os: windows-2019
             target-platform: Android
-        include:
           - os: windows-2019
             target-platform: iOS
-        include:
           - os: windows-latest
             target-platform: Android
-        include:
           - os: windows-latest
             target-platform: iOS
     steps:
