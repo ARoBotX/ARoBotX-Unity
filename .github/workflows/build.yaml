@@ -25,9 +25,19 @@ jobs:
           - 2022.3.9f1
         os:
           - windows-2019
+          - windows-latest
         include:
           - os: windows-2019
             target-platform: Android
+        include:
+          - os: windows-2019
+            target-platform: iOS
+        include:
+          - os: windows-latest
+            target-platform: Android
+        include:
+          - os: windows-latest
+            target-platform: iOS
     steps:
       - uses: actions/checkout@v3
         with:
