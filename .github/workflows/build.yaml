@@ -6,17 +6,34 @@ jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     targetPlatform:
+    #       - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+    #       - StandaloneWindows # Build a Windows standalone.
+    #       - StandaloneWindows64 # Build a Windows 64-bit standalone.
+    #       - StandaloneLinux64 # Build a Linux 64-bit standalone.
+    #       - iOS # Build an iOS player.
+    #       - Android # Build an Android .apk standalone app.
+    #       - WebGL # WebGL.
     strategy:
       fail-fast: false
       matrix:
-        targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-          - StandaloneWindows # Build a Windows standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          - iOS # Build an iOS player.
-          - Android # Build an Android .apk standalone app.
-          - WebGL # WebGL.
+        unity-version:
+          - 2021.3.11f1
+          - 2022.1.23f1
+        os:
+          - windows-2019
+          - macos-12
+          - ubuntu-latest
+        include:
+          - os: windows-2019
+            target-platform: StandaloneWindows64
+          - os: macos-12
+            target-platform: StandaloneOSX
+          - os: ubuntu-latest
+            target-platform: StandaloneLinux64
     steps:
       - uses: actions/checkout@v3
         with:
