@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         with:
-          path: ~/Library
+          path: ../../Library
           key: Library-${{ matrix.unity-version }}-${{ matrix.target-platform }}
       - uses: game-ci/unity-builder@v2
         env:
@@ -32,11 +32,11 @@ jobs:
         os:
           - windows-2019
           - macos-12
-          - ubuntu-latest
+          # - ubuntu-latest
         include:
           - os: windows-2019
             target-platform: StandaloneWindows64
           - os: macos-12
             target-platform: StandaloneOSX
-          - os: ubuntu-latest
-            target-platform: StandaloneLinux64
+          # - os: ubuntu-latest
+          #   target-platform: StandaloneLinux64
