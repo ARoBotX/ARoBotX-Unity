@@ -24,9 +24,9 @@ jobs:
           - 2021.3.11f1
           - 2022.3.9f1
         os:
-          - windows-19
+          - windows-2019
         include:
-          - os: windows-19
+          - os: windows-2019
             target-platform: Android
     steps:
       - uses: actions/checkout@v3
