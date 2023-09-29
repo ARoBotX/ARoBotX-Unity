@@ -31,7 +31,7 @@ jobs:
           - 2022.1.23f1
         os:
           - windows-2019
-          - macos-12
+          # - macos-12
           # - ubuntu-latest
         include:
           - os: windows-2019
