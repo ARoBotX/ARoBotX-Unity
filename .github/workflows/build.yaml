@@ -1,58 +1,42 @@
-name: Build project
+name: CI
 
 on: [push]
 
 jobs:
-  buildForAllSupportedPlatforms:
-    name: Build for ${{ matrix.unity-version }} ${{ matrix.os}} ${{ matrix.target-platform}}
+  build:
+    name: ${{ matrix.target-platform }}
     runs-on: ${{ matrix.os }}
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     targetPlatform:
-    #       - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-    #       - StandaloneWindows # Build a Windows standalone.
-    #       - StandaloneWindows64 # Build a Windows 64-bit standalone.
-    #       - StandaloneLinux64 # Build a Linux 64-bit standalone.
-    #       - iOS # Build an iOS player.
-    #       - Android # Build an Android .apk standalone app.
-    #       - WebGL # WebGL.
-    strategy:
-      fail-fast: false
-      matrix:
-        unity-version:
-          - 2021.3.11f1
-          - 2022.3.9f1
-        os:
-          - windows-2019
-          - windows-latest
-        include:
-          - os: windows-2019
-            target-platform: Android
-          - os: windows-2019
-            target-platform: iOS
-          - os: windows-latest
-            target-platform: Android
-          - os: windows-latest
-            target-platform: iOS
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          lfs: true
       - uses: actions/cache@v3
         with:
-          path: Library
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
-      - uses: game-ci/unity-builder@v3
+          path: ~/Library
+          key: Library-${{ matrix.unity-version }}-${{ matrix.target-platform }}
+      - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: ${{ matrix.targetPlatform }}
+          targetPlatform: ${{ matrix.target-platform }}
+          unityVersion: ${{ matrix.unity-version }}
       - uses: actions/upload-artifact@v3
         with:
-          name: Build-${{ matrix.targetPlatform }}
-          path: build/${{ matrix.targetPlatform }}
+          name: ${{ matrix.target-platform }}-${{ matrix.unity-version }}
+          path: build/${{ matrix.target-platform }}
+    strategy:
+      matrix:
+        unity-version:
+          - 2021.3.11f1
+          - 2022.1.23f1
+        os:
+          - windows-2019
+          - macos-12
+          - ubuntu-latest
+        include:
+          - os: windows-2019
+            target-platform: StandaloneWindows64
+          - os: macos-12
+            target-platform: StandaloneOSX
+          - os: ubuntu-latest
+            target-platform: StandaloneLinux64
