@@ -14,7 +14,7 @@ public class RobotController : MonoBehaviour
     [SerializeField] private float _xOffset;
     [SerializeField] private float _zOffset;
 
-    private bool _testingModeOn = false;
+    [SerializeField] private bool _testingModeOn;
     private GameObject _tempCreatedRobot;
 
     private bool _isCreated = false;

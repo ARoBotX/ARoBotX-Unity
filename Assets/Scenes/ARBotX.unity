@@ -292,6 +292,8 @@ MonoBehaviour:
   _arCamera: {fileID: 310254395}
   _groundPrefab: {fileID: 8741864142584628854, guid: 0cdf5f9696b5b9a47874bf3747e3e46b,
     type: 3}
+  _xOffset: 0
+  _zOffset: 0
 --- !u!4 &276324401
 Transform:
   m_ObjectHideFlags: 0
