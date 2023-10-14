@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 1937820392}
   - component: {fileID: 1937820393}
   m_Layer: 5
-  m_Name: RobotoController
+  m_Name: RobotController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
