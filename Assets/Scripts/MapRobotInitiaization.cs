@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing.Text;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using Vuforia;
 
