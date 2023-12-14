@@ -956,7 +956,7 @@ MonoBehaviour:
     type: 3}
   _planeFinder: {fileID: 1154587679}
   _arCamera: {fileID: 310254395}
-  _groundPrefab: {fileID: 8741864142584628854, guid: 0cdf5f9696b5b9a47874bf3747e3e46b,
+  _groundPrefab: {fileID: 3990341714667225835, guid: ec2fdbdb3b4725746935b009d13cba0b,
     type: 3}
   _xOffset: 0
   _zOffset: 0
