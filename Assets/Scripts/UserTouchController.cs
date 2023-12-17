@@ -19,6 +19,7 @@ public class UserTouchController : MonoBehaviour
     private World vuWorld;
     private IEnumerable a;
     private Vector3 _roomPosition;
+    public static Transform nextPointerPlacement;
 
     public void LockAnchorForInitialClick(HitTestResult result)
     {
@@ -32,11 +33,13 @@ public class UserTouchController : MonoBehaviour
         if (listenerBehaviour != null && _roomPlaced) {
             Vector3 pointerPosition = new Vector3 (result.Position.x, _roomPosition.y+ 0.01f, result.Position.z);
             GameObject pointer = Instantiate(_pointer, pointerPosition, result.Rotation, GameObject.FindGameObjectWithTag("Room").transform);
+            nextPointerPlacement = pointer.transform;
             pointer.tag = "Pointer";
 
         }
         else if ( _anchorBehaviour != null && !_roomPlaced) {
-            GameObject room = Instantiate(_room, result.Position, result.Rotation);
+            Vector3 roomPosition = new Vector3(result.Position.x+0.1f, result.Position.y, result.Position.z-0.11f);
+            GameObject room = Instantiate(_room, roomPosition, result.Rotation);
             _roomPosition = result.Position;
             room.tag = "Room";
             _roomPlaced = true;

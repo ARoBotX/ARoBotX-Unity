@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Room
   - Pointer
+  - Robot
   layers:
   - Default
   - TransparentFX
