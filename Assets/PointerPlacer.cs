@@ -20,9 +20,5 @@ public class PointerPlacer : MonoBehaviour
 
     void PlacePointer(TargetStatus status)
     {
-        Debug.Log("Working PlacePointer");
-        Debug.Log("Status " + status);
-        Debug.Log("pos "+_imageTarget.transform.position);
-        Debug.Log("rot " + _imageTarget.transform.rotation);
     }
 }
