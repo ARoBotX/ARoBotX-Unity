@@ -135,7 +135,7 @@ public class RobotMovementController : MonoBehaviour
                 Debug.Log("robotPosition.localPosition");
                 Debug.Log(_robotPlacement.localPosition); 
                 _robotPlacement.localPosition = robotPosition + new Vector3(-0.920000017f, 0.0350000001f, -1.30200005f);
-                
+                _robotPlacement.rotation = robotRotation;
                 //_robotPlacement.rotation = robotRotation;
 
                 //_robotPlacement.Translate(Vector3.forward * (1/3600) *Time.deltaTime);
