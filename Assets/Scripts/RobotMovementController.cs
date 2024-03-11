@@ -155,8 +155,11 @@ public class RobotMovementController : MonoBehaviour
         string dataSliced = data.msg.Replace("[", "").Replace("]", "");
         string[] dataArr = dataSliced.Split(',');
         robotPosition = new Vector3(float.Parse(dataArr[0])*0.0007f, 0, float.Parse(dataArr[1]) * 0.0007f);
-        robotRotation = Quaternion.Euler(0f, float.Parse(dataArr[2]), 0f);
-        Debug.Log(robotPosition);
+        float robotYRotation = -float.Parse(dataArr[2]) + 90.0f;
+        robotRotation = Quaternion.Euler(0f, robotYRotation, 0f);
+        //Debug.Log(robotPosition);
+        Debug.Log("robotRotation");
+        Debug.Log(robotRotation);
         
     }
 
